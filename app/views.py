@@ -7,7 +7,7 @@ from .serializers import PostSerializer
 @api_view(['GET', 'POST'])
 def post_list(request):
     if request.method == 'GET':
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-id')
         serializer = PostSerializer(posts, many=True)
         return Response(serializer.data)
 
